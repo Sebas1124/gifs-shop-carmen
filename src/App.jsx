@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Input } from "./components/atoms/Input"
-import { GifCard } from "./components/molec/GifCard"
 import { useDebounce } from "./hooks/useDebounce"
 import { InfiniteGifGrid } from "./components/organims/InfiniteGifGrid"
 
@@ -13,7 +12,7 @@ export const App = () => {
     setValue( event.target.value )
   }
 
-  const debounceSearch = useDebounce( value, 500 );
+  const debounceSearch = useDebounce( value, 700 );
 
   return (
     <div className="flex min-h-screen bg-slate-950 text-white p-4 overflow-hidden">
@@ -57,7 +56,7 @@ export const App = () => {
             : 'Mostrando gifs de tendencias'
           }
 
-          {/* <InfiniteGifGrid category={debounceSearch}/> */}
+          <InfiniteGifGrid category={debounceSearch}/>
 
         </main>
 
