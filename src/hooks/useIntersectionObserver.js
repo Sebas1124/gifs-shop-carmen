@@ -9,6 +9,7 @@ export const useIntersectionObserver = ({ onIntersect, enable = true }) => {
       
         if ( !enable ) return;
 
+        //TODO: explicarle a carmen que es IntersectionObserver
         const observer = new IntersectionObserver(
             (entries) => {
                 const first = entries[0];
