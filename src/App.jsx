@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Input } from "./components/atoms/Input"
 import { useDebounce } from "./hooks/useDebounce"
 import { InfiniteGifGrid } from "./components/organims/InfiniteGifGrid"
+import { CartSidebar } from "./components/organims/CartSidebar"
+import { useCartStore } from "./store/useCartStore"
 
 
 export const App = () => {
@@ -13,6 +15,10 @@ export const App = () => {
   }
 
   const debounceSearch = useDebounce( value, 700 );
+
+  const isOpen        = useCartStore((state) => state.isOpen);
+  const toggleSidebar = useCartStore((state) => state.toggleSidebar);
+  
 
   return (
     <div className="flex min-h-screen bg-slate-950 text-white p-4 overflow-hidden">
@@ -40,7 +46,8 @@ export const App = () => {
           </div>
 
           <button
-            className="lg:hidden relative p-2 text-2xl"
+            className="relative p-2 text-2xl"
+            onClick={toggleSidebar}
           >
             🛒
           </button>
@@ -61,6 +68,10 @@ export const App = () => {
         </main>
 
       </div>
+
+      {
+        isOpen == true ? <CartSidebar/> : null
+      }
 
     </div>
   )
