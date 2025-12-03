@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Hola mundo</h2>
+    <button id="carmenButton">hacer click</button>
+
+    <div id="dinamicContent">
+
+    </div>
+
+
+    <script>
+        const button     = document.querySelector('#carmenButton');
+        const divContent = document.querySelector('#dinamicContent');
+
+        const saludarCarmen = () => {
+            alert("Hola carmen");
+        }
+
+        const listaFrutas = ["manzana", "pera", "uva", "mango"];
+
+        const busqueda = (fruta) => fruta === "mango"
+
+        const manzanaFruta = listaFrutas.find(busqueda);
+        
+        if(manzanaFruta) {
+            divContent.innerHTML = `<p>La fruta ${manzanaFruta} si está en la lista</p>`;
+        }
+
+        button.addEventListener("click", saludarCarmen);
+
+    </script>
+    
+</body>
+</html>
