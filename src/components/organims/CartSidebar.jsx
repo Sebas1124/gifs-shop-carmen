@@ -14,6 +14,9 @@ export const CartSidebar = () => {
 
     const totalCarrito = useCartStore((state) => state.totalPrice);
 
+
+    console.log(cart);
+
   return (
 
     <>

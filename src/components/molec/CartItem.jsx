@@ -4,8 +4,7 @@ import { useCartStore } from '../../store/useCartStore'
 export const CartItem = ({ id, img, titulo, precio, cantidad }) => {
 
     const eliminar = useCartStore((state) => state.removeFromcart);
-    const incrementar = useCartStore((state) => state.addToCart);
-    const decrementar = useCartStore((state) => state.decrementeQuantity);
+    const updateQuantity = useCartStore((state) => state.updateQuantity);
 
   return (
     <div className='flex gap-3 bg-slate-800 p-2 rounded-lg'>
@@ -20,14 +19,14 @@ export const CartItem = ({ id, img, titulo, precio, cantidad }) => {
 
             <div className="flex items-center gap-2 mt-2">
                 <button 
-                    onClick={() => decrementar({ id })}
+                    onClick={() => updateQuantity(id, -1)}
                     className="cursor-pointer px-2 bg-slate-700 rounded text-xs"
                 >
                     -1
                 </button>
                 <span>{cantidad}</span>
                 <button 
-                    onClick={() => incrementar({ id })}
+                    onClick={() => updateQuantity(id, +1)}
                     className="cursor-pointer px-2 bg-slate-700 rounded text-xs"
                 >
                     +1

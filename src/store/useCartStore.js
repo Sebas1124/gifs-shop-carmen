@@ -11,6 +11,7 @@ export const useCartStore = create((set, get) => ({
     // metodo
     toggleSidebar: () => set( (state) => ({ isOpen: !state.isOpen }) ),
 
+    //este ahora sirve solo para agregar al carrito, no para incrementar la cantidad
     addToCart: ( producto ) => {
         const cart = get().cart;
 
@@ -45,6 +46,7 @@ export const useCartStore = create((set, get) => ({
         })
     },
 
+    //ya no sirve porque tenemos el updateQuantity
     decrementeQuantity: ( producto ) => {
         const cart = get().cart;
 
@@ -60,6 +62,7 @@ export const useCartStore = create((set, get) => ({
                     : item
                 )
             })
+            
         }
     },
 
@@ -88,5 +91,15 @@ export const useCartStore = create((set, get) => ({
 
         return total;
     },
-
+    updateQuantity:(id, amount) => set((state)=>({
+        cart: state.cart.map(producto => {
+            if(producto.id == id){
+                return {
+                    ...producto, 
+                    cantidad: Math.max(1, producto.cantidad + amount) //amount siempre será -1 o +1
+                }
+            }
+            return producto; 
+        })
+    }))
 }))
