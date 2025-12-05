@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+    <h1>Intersección</h1>
+
+    <div id="caja-final" style="background-color: red;">
+        Hola, soy el final.
+    </div>
+
+    <script>
+        const objetivo = document.querySelector('#caja-final');
+
+        const funcionARealizar = (entradas) => {
+            
+            const entrada = entradas[0];
+
+            if (entrada.isIntersecting) {
+                console.log('El elemento objetivo es visible');
+            } else {
+                console.log('El elemento objetivo NO es visible');
+            }
+
+        }
+
+        // root -> contenedor donde vamos a observar.
+        // contenedor por defecto del html es la ventana del navegador.
+        // rootMargin -> margen de error para que se dispare la interseccion.
+
+        const vigilante = new IntersectionObserver(funcionARealizar, {
+            root: null, // -> la ventana del navegador ?? -> por que null? porque es la ventana completa.
+            rootMargin: '15px',
+            threshold: 0 // -> porcentaje de visibilidad del elemento objetivo.
+        })
+
+        vigilante.observe(objetivo);
+        
+    </script>
+    
+</body>
+</html>

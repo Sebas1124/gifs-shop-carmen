@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Input } from "./components/atoms/Input"
 import { useDebounce } from "./hooks/useDebounce"
 import { InfiniteGifGrid } from "./components/organims/InfiniteGifGrid"
@@ -18,6 +18,16 @@ export const App = () => {
 
   const isOpen        = useCartStore((state) => state.isOpen);
   const toggleSidebar = useCartStore((state) => state.toggleSidebar);
+
+  // const elementoObjetivo = useRef(null);
+
+  // useEffect(() => {
+    
+  //   if (!elementoObjetivo.current) return;
+
+  //   elementoObjetivo.current.style.backgroundColor = 'red';
+
+  // }, [elementoObjetivo])
   
 
   return (
@@ -68,6 +78,10 @@ export const App = () => {
         </main>
 
       </div>
+
+      {/* <div ref={elementoObjetivo}>
+        Hola soy el final
+      </div> */}
 
       {
         isOpen == true ? <CartSidebar/> : null
