@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useCartStore } from "../../store/useCartStore"
 import { CartItem } from "../molec/CartItem";
 
@@ -12,10 +13,13 @@ export const CartSidebar = () => {
     // obtener el estado del carrito
     const cart = useCartStore((state) => state.cart);
 
-    const totalCarrito = useCartStore((state) => state.totalPrice);
+    // useMemo -> nuevo hook
 
-
-    console.log(cart);
+    const total = useMemo(() => {
+        return cart.reduce(
+            (acc, item) => acc + item.price * item.cantidad
+        , 0);
+    }, [cart]);
 
   return (
 
@@ -59,7 +63,7 @@ export const CartSidebar = () => {
                 <div className="border-t border-slate-700 pt-4 mt-4">
                     <div className="flex justify-between text-xl font-bold mb-4">
                         <span>Total:</span>
-                        <span>{totalCarrito()}</span>
+                        <span>{total}€</span>
                     </div>
 
                 </div>

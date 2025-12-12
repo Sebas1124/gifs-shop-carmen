@@ -18,6 +18,7 @@ export const App = () => {
 
   const isOpen        = useCartStore((state) => state.isOpen);
   const toggleSidebar = useCartStore((state) => state.toggleSidebar);
+  const cart          = useCartStore((state) => state.cart);
 
   // const elementoObjetivo = useRef(null);
 
@@ -59,6 +60,11 @@ export const App = () => {
             className="relative p-2 text-2xl"
             onClick={toggleSidebar}
           >
+            <span className="absolute -top-2 -left-2 bg-pink-600 rounded-full w-5 h-6 flex justify-center items-center text-white font-bold p-3 text-sm">
+              {
+                cart.length
+              }
+            </span>
             🛒
           </button>
 
